@@ -61,10 +61,10 @@ Maze.prototype.setEndingPosition = function( x, y ) {
 // follows the law of demeter in adding a wrapper method around the MazeSpace objects
 // set wall method, allowing for clear separation of concerns and allows for decoupled objects.  
 Maze.prototype.setWall = function( x, y, direction ) {
-	var valid_directions = ["north", "south", "east", "west"];
+	
 
 	// Check to see if coordinates are within bounds of the maze and direction is valid.
-	if ( x > 0 && x <= this.width && y > 0 && y <= this.height && valid_directions.indexOf( direction ) !== -1 ) {
+	if ( x > 0 && x <= this.width && y > 0 && y <= this.height && this.directions.indexOf( direction ) !== -1 ) {
 		this.spaces[x][y].setWall( direction );
 		return true;
 	}
