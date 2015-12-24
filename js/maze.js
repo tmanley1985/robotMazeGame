@@ -46,7 +46,7 @@ function Maze( width, height )
 //Sets a method on the Maze Object to set robot's starting position
 Maze.prototype.setStartingPosition = function( x, y, orientation ) {
 	
-	if ( isValidDirection( orientation ) ) {
+	if ( this.isValidDirection( orientation ) ) {
 		
 		this.startX = x;
 		this.startY = y;
