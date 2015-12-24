@@ -45,9 +45,13 @@ function Maze( width, height )
 
 //Sets a method on the Maze Object to set robot's starting position
 Maze.prototype.setStartingPosition = function( x, y, orientation ) {
-	this.startX = x;
-	this.startY = y;
-	this.startOrientation = orientation;
+	
+	if ( isValidDirection( orientation ) ) {
+		
+		this.startX = x;
+		this.startY = y;
+		this.startOrientation = orientation;	
+	}
 
 }
 
@@ -64,10 +68,15 @@ Maze.prototype.setWall = function( x, y, direction ) {
 	
 
 	// Check to see if coordinates are within bounds of the maze and direction is valid.
-	if ( x > 0 && x <= this.width && y > 0 && y <= this.height && this.directions.indexOf( direction ) !== -1 ) {
+	if ( x > 0 && x <= this.width && y > 0 && y <= this.height && this.isValidDirection( direction ) ) {
 		this.spaces[x][y].setWall( direction );
 		return true;
 	}
 
 	return false;
+}
+
+Maze.prototype.isValidDirection( direction ) {
+
+	return this.directions.indexOf(direction) !== -1;
 }
